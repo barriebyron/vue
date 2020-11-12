@@ -211,7 +211,7 @@ export default {
 		},
 		address() {
 			const client = this.$store.getters['cosmos/client']
-			return client && client.senderAddress
+			return client && client.signer
 		}
 	},
 	methods: {

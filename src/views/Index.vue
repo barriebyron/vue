@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<SpBlockExplorer />
+		<!-- <SpBlockExplorer /> -->
 		<div class="container">
 			<SpSignIn />
 			<SpBankBalances />
@@ -27,6 +27,7 @@ import SpTypeForm from '@/components/SpTypeForm'
 
 export default {
 	components: {
+		// eslint-disable-next-line vue/no-unused-components
 		SpBlockExplorer,
 		SpSignIn,
 		SpBankBalances,

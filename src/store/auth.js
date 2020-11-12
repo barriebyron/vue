@@ -1,9 +1,11 @@
 import axios from 'axios'
 import {
 	Secp256k1HdWallet,
-	SigningCosmosClient,
+	// SigningCosmosClient,
 	makeCosmoshubPath
 } from '@cosmjs/launchpad'
+
+import { SigningStargateClient } from '@cosmjs/stargate'
 
 export default {
 	state: {
@@ -40,7 +42,7 @@ export default {
 			const acc = (await axios.get(url)).data
 			const account = acc.result.value
 			commit('set', { key: 'account', value: account })
-			const client = new SigningCosmosClient(API, address, wallet)
+			const client = new SigningStargateClient(API, address, wallet)
 			commit('set', { key: 'client', value: client })
 			try {
 				await dispatch('bankBalancesGet')
