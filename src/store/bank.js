@@ -14,7 +14,7 @@ export default {
 	actions: {
 		async tokenSend({ rootGetters }, { amount, denom, to_address, memo = '' }) {
 			const client = rootGetters['cosmos/client']
-			const from_address = client.senderAddress
+			const from_address = client.signer
 			const msg = {
 				type: 'cosmos-sdk/MsgSend',
 				value: {
@@ -32,7 +32,8 @@ export default {
 				amount: coins(0, denom),
 				gas: '200000'
 			}
-			return await client.signAndBroadcast([msg], fee, memo)
+			console.log(client)
+			return await client.signAndBroadcast(from_address, [msg], fee, memo)
 		},
 		async bankBalancesGet({ commit, rootGetters }) {
 			const { API } = rootGetters['cosmos/appEnv']
