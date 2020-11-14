@@ -210,8 +210,8 @@ export default {
 			return bip39.validateMnemonic(this.mnemonicClean)
 		},
 		address() {
-			const client = this.$store.getters['cosmos/client']
-			return client && client.signer
+			const account = this.$store.getters['cosmos/account']
+			return account && account.address
 		}
 	},
 	methods: {
