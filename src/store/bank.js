@@ -41,32 +41,35 @@ export default {
 				gas: '200000'
 			}
 			// console.log(account)
-			// const signMeta = {
-			// 	account_number: account.account_number,
-			// 	chain_id: chainId,
-			// 	sequence: (parseInt(account.sequence) + 1).toString()
-			// }
-			// const walletSet = {
-			// 	address: from_address,
-			// 	privateKey: Uint8Array.from(wallet.privkey),
-			// 	publicKey: Uint8Array.from(wallet.pubkey)
-			// }
+			const signMeta = {
+				account_number: account.account_number,
+				chain_id: chainId,
+				sequence: (parseInt(account.sequence) + 1).toString()
+			}
+			const walletSet = {
+				privateKey: wallet.privkey,
+				publicKey: wallet.pubkey
+			}
 
-			// const txSigned = signTx({ fee, memo, msg }, signMeta, walletSet)
-			// const txBroadcast = createBroadcastTx(txSigned, 'sync')
+			// console.log(wallet)
 
+			const txSigned = signTx({ fee, memo, msg }, signMeta, walletSet)
+			// txSigned.signatures[0].account_number = account.account_number
+			// txSigned.signatures[0].sequence = (
+			// 	parseInt(account.sequence) + 1
+			// ).toString()
+			const txBroadcast = createBroadcastTx(txSigned, 'sync')
+			// console.log(txBroadcast)
 			// console.log(JSON.stringify(txBroadcast))
 
-			// await axios.post(`${API}/txs`, {
-			// 	headers: {
-			// 		'Content-Type': 'application/json'
-			// 	},
-			// 	body: JSON.stringify(txBroadcast)
-			// })
+			await axios.post(`${API}/txs/encode`, {
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(txBroadcast)
+			})
 
-			const accounts = await client.signer.getAccounts()
-
-			return await client.signAndBroadcast(from_address, msg, fee, memo)
+			// return await client.signAndBroadcast(from_address, msg, fee, memo)
 		},
 		async bankBalancesGet({ commit, rootGetters }) {
 			const { API } = rootGetters['cosmos/appEnv']

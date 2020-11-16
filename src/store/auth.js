@@ -47,9 +47,13 @@ export default {
 			const url = `${API}/cosmos/auth/v1beta1/accounts/${address}`
 			const acc = (await axios.get(url)).data.account
 			commit('set', { key: 'account', value: acc })
-			const { tmClient } = await StargateClient.connect(RPC)
-			const client = new SigningStargateClient(tmClient, wallet, {})
-			console.log(tmClient.status)
+			// const client = await SigningStargateClient.connectWithWallet(
+			// 	RPC,
+			// 	wallet,
+			// 	{}
+			// )
+			const client = new SigningStargateClient(RPC, wallet, {})
+			// console.log(client)
 			commit('set', { key: 'client', value: client })
 			try {
 				await dispatch('bankBalancesGet')
