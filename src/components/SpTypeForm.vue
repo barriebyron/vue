@@ -76,11 +76,7 @@ export default {
 	},
 	computed: {
 		hasAddress() {
-<<<<<<< HEAD
-			return !!this.$store.state.cosmos.bank.account.address
-=======
 			return !!this.$store.state.cosmos.auth.account.address
->>>>>>> develop
 		},
 		valid() {
 			return Object.values(this.fieldsList).every(el => {
