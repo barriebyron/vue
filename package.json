@@ -10,10 +10,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@cosmjs/encoding": "^0.24.0-alpha.7",
-    "@cosmjs/launchpad": "^0.24.0-alpha.7",
-    "@cosmjs/proto-signing": "^0.24.0-alpha.7",
-    "@cosmjs/stargate": "0.24.0-alpha.7",
+    "@cosmjs/encoding": "^0.24.0-alpha.8",
+    "@cosmjs/launchpad": "^0.24.0-alpha.8",
+    "@cosmjs/proto-signing": "^0.24.0-alpha.8",
+    "@cosmjs/stargate": "0.24.0-alpha.8",
     "axios": "^0.20.0",
     "bip39": "^3.0.2",
     "core-js": "^3.6.5",
