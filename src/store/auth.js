@@ -1,11 +1,6 @@
 import axios from 'axios'
-import {
-	// Secp256k1HdWallet,
-	// SigningCosmosClient,
-	makeCosmoshubPath
-} from '@cosmjs/launchpad'
-
-import { SigningStargateClient, StargateClient } from '@cosmjs/stargate'
+import { makeCosmoshubPath } from '@cosmjs/launchpad'
+import { SigningStargateClient } from '@cosmjs/stargate'
 import { DirectSecp256k1Wallet } from '@cosmjs/proto-signing'
 
 export default {
@@ -34,8 +29,6 @@ export default {
 		async accountSignIn({ commit, dispatch, rootGetters }, { mnemonic }) {
 			const { API, ADDR_PREFIX, RPC } = rootGetters['cosmos/appEnv']
 
-			// console.log(DirectSecp256k1HdWallet)
-
 			const wallet = await DirectSecp256k1Wallet.fromMnemonic(
 				mnemonic,
 				makeCosmoshubPath(0),
@@ -47,13 +40,11 @@ export default {
 			const url = `${API}/cosmos/auth/v1beta1/accounts/${address}`
 			const acc = (await axios.get(url)).data.account
 			commit('set', { key: 'account', value: acc })
-			// const client = await SigningStargateClient.connectWithWallet(
-			// 	RPC,
-			// 	wallet,
-			// 	{}
-			// )
-			const client = new SigningStargateClient(RPC, wallet, {})
-			// console.log(client)
+			const client = await SigningStargateClient.connectWithWallet(
+				RPC,
+				wallet,
+				{}
+			)
 			commit('set', { key: 'client', value: client })
 			try {
 				await dispatch('bankBalancesGet')

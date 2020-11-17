@@ -9,8 +9,8 @@
   },
   "main": "src/index.js",
   "dependencies": {
-    "@cosmjs/encoding": "^0.23",
-    "@cosmjs/launchpad": "^0.23",
+    "@cosmjs/encoding": "^0.24.0-alpha.6",
+    "@cosmjs/launchpad": "^0.24.0-alpha.6",
     "@cosmjs/proto-signing": "^0.24.0-alpha.6",
     "@cosmjs/stargate": "0.24.0-alpha.6",
     "@tendermint/sig": "^0.6.0",

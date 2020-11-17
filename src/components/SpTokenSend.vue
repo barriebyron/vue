@@ -200,18 +200,19 @@ export default {
 				}
 				this.txResult = ''
 				this.inFlight = true
-				// this.txResult = await this.$store.dispatch('cosmos/tokenSend', payload)
-				// if (!this.txResult.code) {
-				// 	this.amount = ''
-				// 	this.to_address = ''
-				// 	this.memo = ''
-				// }
-				// this.inFlight = false
-				// await this.$store.dispatch('cosmos/bankBalancesGet')
 				await this.$store
 					.dispatch('cosmos/tokenSend', payload)
-					.then(res => console.log(res))
+					.then(res => {
+						this.txResult = res
+					})
 					.catch(err => console.log(err))
+				if (!this.txResult.code) {
+					this.amount = ''
+					this.to_address = ''
+					this.memo = ''
+				}
+				this.inFlight = false
+				await this.$store.dispatch('cosmos/bankBalancesGet')
 			}
 		}
 	}
