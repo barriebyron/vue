@@ -34,7 +34,6 @@ export default {
 			const req = { base_req, creator, ...body }
 			const module_name = module || CHAIN_ID
 			const { data } = await axios.post(`${API}/${module_name}/${type}`, req)
-			console.log(data)
 			const { msg, fee, memo } = data.value
 			return await client.signAndBroadcast(msg, fee, memo)
 		}

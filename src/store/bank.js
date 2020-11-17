@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { coins } from '@cosmjs/launchpad'
-import { signTx, createBroadcastTx } from '@tendermint/sig'
 
 export default {
 	state: {

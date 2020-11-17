@@ -1,11 +1,20 @@
 import axios from 'axios'
+<<<<<<< HEAD
 import { makeCosmoshubPath } from '@cosmjs/launchpad'
 import { SigningStargateClient } from '@cosmjs/stargate'
 import { DirectSecp256k1Wallet } from '@cosmjs/proto-signing'
+=======
+import {
+	Secp256k1HdWallet,
+	SigningCosmosClient,
+	makeCosmoshubPath
+} from '@cosmjs/launchpad'
+>>>>>>> develop
 
 export default {
 	state: {
 		account: {},
+<<<<<<< HEAD
 		client: null,
 		wallet: null
 	},
@@ -13,6 +22,13 @@ export default {
 		client: state => state.client,
 		account: state => state.account,
 		wallet: state => state.wallet
+=======
+		client: null
+	},
+	getters: {
+		client: state => state.client,
+		account: state => state.account
+>>>>>>> develop
 	},
 	mutations: {
 		set(state, { key, value }) {
